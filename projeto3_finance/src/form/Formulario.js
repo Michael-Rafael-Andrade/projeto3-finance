@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Recebe a função via PROP
-function Formulario({ aoEnviar }) { 
+function Formulario({ aoEnviar }) {
 
-    const [ formData, setFormData ] = useState({
+    const [formData, setFormData] = useState({
         descricao: '',
         valor: '',
         categoria: '',
@@ -20,8 +20,8 @@ function Formulario({ aoEnviar }) {
         });
     });
 
-    function handleSubmit(){
-       // Envia os dados para o App.js
+    function handleSubmit() {
+        // Envia os dados para o App.js
         aoEnviar(formData);
 
         // Limpa os campos
@@ -32,8 +32,8 @@ function Formulario({ aoEnviar }) {
             tipo: ''
         });
     }
-       
-   
+
+
 
     // Função de validação simples para o botão funcionar
     const formularioValido = () => {
@@ -41,46 +41,85 @@ function Formulario({ aoEnviar }) {
     };
 
     return (
-        <div className="form-container">
+        <form className="form-container">
 
-            {/* // Input para capturar os dados do nome (name) */}
-            <input name="descricao" value={formData.descricao} placeholder="Descrição" onChange={handleChange} />
+            <div className="form-group">
+                <label htmlFor="descricao" className="form-label">Descrição</label>
+                <input
+                    id="descricao"
+                    name="descricao"
+                    value={formData.descricao}
+                    placeholder="Ex: Salário mensal, Compra de mercado"
+                    onChange={handleChange}
+                    className="form-input"
+                />
+            </div>
 
-            {/* // Input para capturar os dados do valor (value) */}
-            <input name="valor" type="number" value={formData.valor} placeholder="Valor" onChange={handleChange} />
+            {/* Grupo Valor */}
+            <div className="form-group">
+                <label htmlFor="valor" className="form-label">Valor (R$)</label>
+                <input
+                    id="valor"
+                    name="valor"
+                    type="number"
+                    value={formData.valor}
+                    placeholder="Digite o valor"
+                    onChange={handleChange}
+                    className="form-input"
+                />
+            </div>
 
-            {/* Opções de seleção dentro input categoria */}
-            <select name="categoria" value={formData.categoria} onChange={handleChange}>
-                <option value="">Selecione a Categoria</option>
-                <option value="Alimentação">Alimentação</option>
-                <option value="Moradia">Moradia</option>
-                <option value="Transporte">Transporte</option>
-                <option value="Lazer">Lazer</option>
-                <option value="Salario">Salario</option>
-            </select>
+            {/* Grupo Categoria */}
+            <div className="form-group">
+                <label htmlFor="categoria" className="form-label">Categoria</label>
+                <select
+                    id="categoria"
+                    name="categoria"
+                    value={formData.categoria}
+                    onChange={handleChange}
+                    className="form-select styled-select" 
+                >
+                    <option value="">Selecione a Categoria</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Moradia">Moradia</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Lazer">Lazer</option>
+                    <option value="Salario">Salario</option>
+                </select>
+            </div>
 
-            {/* Tipo ( Entrada ou Saída) */}
-            <select name="tipo" value={formData.tipo} onChange={handleChange}>
-                <option value="">Tipo</option>
-                <option value="entrada">Entrada</option>
-                <option value="saida">Saida</option>
-            </select>
-            
+            {/* Grupo Tipo */}
+            <div className="form-group">
+                <label htmlFor="tipo" className="form-label">Tipo</label>
+                <select
+                    id="tipo"
+                    name="tipo"
+                    value={formData.tipo}
+                    onChange={handleChange}
+                    className="form-select styled-select" 
+                >
+                    <option value="">Entrada / Saída</option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
 
+            <div className="options-bar">
+                Alimentação, Moradia, Transporte, Lazer, Salário
+            </div>
 
-            {/* // Criar o botão para enviar os dados se estiver preenchido todos os campos */}
+            {/* Botão de Enviar */}
             <button
                 type="button"
                 onClick={handleSubmit}
                 disabled={!formularioValido()}
-                className="btn-enviar"
+                className="btn-add-transaction"
             >
                 Adicionar Transação
             </button>
-        </div>
+        </form>
     );
 }
 
 
-   
 export default Formulario;

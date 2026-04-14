@@ -42,7 +42,7 @@ function App() {
     <div className="container-principal">
       {/* // Cabeçalho */}
       <header>
-        <h1>Rastreador financeiro</h1>
+        <h1 className="titulo">Rastreador financeiro</h1>
       </header>
 
       {/* Seção Superior: Grid de 3 colunas para Resumo e Gráficos */}
@@ -70,6 +70,14 @@ function App() {
 
         <div className="card-box listagem-container">
           <h3>Transações recentes</h3>
+
+          <div className="transaction-header">
+              <span>Data</span>
+              <span>Descrição</span>
+              <span>Categoria</span>
+              <span>Valor</span>
+          </div>
+
           <div className="data-container">
             {transacoes.length > 0 ? (
               transacoes.map((item) => (

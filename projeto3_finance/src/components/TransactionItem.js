@@ -17,22 +17,27 @@ function TransactionItem({
 
     // Definir uma cor ou classe de acordo com as cores da imagem apresentada no desafio do projeto 3 (entrada = verde, saída = vermelho)
     const typeClass = tipo === 'entrada' ? 'item-entrada' : 'item-saida';
+    const sinal = tipo === 'entrada' ? '+' : '-';
 
     return (
         <div className={`transaction-card ${typeClass}`}>
-            <div className="transaction-info">
-                {/* Exibe a data e a descrição da movimentação */}
-                <span className="transaction-date">{date}</span>
-                <strong className="transaction-desc">{descricao}</strong>
+            {/* Coluna 1: Data */}
+            <div className="col-date">{date}</div>
 
-                {/* Exibe a categoria e o valor formatado */}
-                <div className="transaction-details">
-                    <span>{categoria}</span>
-                    <span>R$ {Number(valor).toFixed(2)}</span> 
-                </div>
+            {/* Coluna 2: Descrição */}
+            <div className="col-desc">
+                <strong>{descricao}</strong>
             </div>
 
-            {/* Botão de excluir, similar ao do projeto IMC */}
+            {/* Coluna 3: Categoria */}
+            <div className="col-category">{categoria}</div>
+
+            {/* Coluna 4: Valor (com cor e sinal específicos) */}
+            <div className={`col-amount ${tipo}`}>
+                {sinal} R$ {Number(valor).toFixed(2)}
+            </div>
+
+            {/* Botão de excluir */}
             <button className="delete-btn" onClick={handleDelete}>
                 X
             </button>

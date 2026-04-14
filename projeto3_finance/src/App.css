@@ -1,47 +1,138 @@
-:root{
+:root {
   /* background-color: #777777; */
-  --bg-body: #f4f7f6; /* Fundo cinza muito claro para destacar os cards brancos */
-  --bg-card: #ffffff; /* Fundo branco para os containers */
+  --bg-body: #f4f7f6;
+  /* Fundo cinza muito claro para destacar os cards brancos */
+  --bg-card: #ffffff;
+  /* Fundo branco para os containers */
   --primary-blue: #007bff;
   --border-color: #e0e0e0;
 }
 
-body{
+body {
   background-color: var(--bg-body);
   font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 20px;
 }
 
-.container-principal{
+.container-principal {
   max-width: 1200px;
   margin: 0 auto;
 }
 
 /* Define o Grid de cima: 3 colunas iguais */
-.grid-superior{
+.grid-superior {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
 
 /* Define o Grid de baixo: 2 colunas, sendo a lista um pouco maior */
-.grid-inferior{
+.grid-inferior {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 20px;
 }
 
+.titulo {
+  margin-top: 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: #aaa;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.styled-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  color: #666;
+}
+
+.options-bar{
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 20px 0;
+  font-size: 0.8rem;
+  color: #999;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.btn-add-transaction{
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-add-transaction:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-add-transaction:hover{
+  background-color: #0056b3;
+}
+
+
 /* Estilo padrão para todos os "quadros" brancos */
-.card-box{
+.card-box {
   background: var(--bg-card);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-color);
 }
 
-.card-box h3{
+.card-box h3 {
   margin-top: 0;
   font-size: 1.2rem;
   border-bottom: 1px solid var(--border-color);
@@ -50,7 +141,7 @@ body{
   text-align: center;
 }
 
-.card-box h4{
+.card-box h4 {
   margin-top: 0;
   font-size: 0.8rem;
   /* border-bottom: 1px solid var(--border-color); */
@@ -60,32 +151,46 @@ body{
 }
 
 /* Estilo para os itens do resumo financeiro */
-.summary-item{
+.summary-item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
 
+/* Cabeçalho da lista para alinhar com os itens */
+.transaction-header {
+  display: flex;
+  padding: 10px 12px;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 5px;
+}
+
 /* Estilizando a trnsação do card */
-.transaction-card{
+.transaction-card {
   background: white;
   color: #333333;
   padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 4px;
+  margin-bottom: 8px;
+  border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--border-color);
+  transition: transform 0.2s
 }
 
-.item-entrada{
-  border-left: 5px solid #28a745; /* verde claro para combinar */
+.item-entrada {
+  border-left: 5px solid #28a745;
+  /* verde claro para combinar */
 }
 
-.item-saida{
-  border-left: 5px solid #dc3545; /* vermelho claro para combinar */
+.item-saida {
+  border-left: 5px solid #dc3545;
+  /* vermelho claro para combinar */
 }
 
 /* Botão de excluir discreto */
@@ -93,11 +198,73 @@ body{
   background: none;
   border: 1px solid #ddd;
   color: #999999;
-  cursor: pointer; /* exibir a mão para indicar clicar */
+  cursor: pointer;
+  /* exibir a mão para indicar clicar */
   border-radius: 3px;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
   background: #ff4d4d;
   color: white;
+}
+
+/* Estilização das Colunas (Larguras baseadas na imagem de referência) */
+.col-date {
+  width: 100px;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.col-desc {
+  flex: 2;
+  padding-left: 10px;
+}
+
+.col-category {
+  flex: 1;
+  color: #555;
+  text-align: center;
+}
+
+.col-amount {
+  flex: 1;
+  text-align: right;
+  font-weight: bold;
+  padding-right: 15px;
+}
+
+/* Cores específicas para o valor */
+.col-amount.entrada {
+  color: #28a745;
+}
+
+.col-amount.saida {
+  color: #dc3545;
+}
+
+/* Ajuste do cabeçalho para bater com as larguras das colunas */
+.transaction-header span:nth-child(1) {
+  width: 100px;
+}
+
+.transaction-header span:nth-child(2) {
+  flex: 2;
+  padding-left: 10px;
+}
+
+.transaction-header span:nth-child(3) {
+  flex: 1;
+  text-align: center;
+}
+
+.transaction-header span:nth-child(4) {
+  flex: 1;
+  text-align: right;
+  padding-right: 45px;
+}
+
+/* Efeito de hover para parecer mais profissional */
+.transaction-card:hover {
+  background-color: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05s);
 }
