@@ -1,3 +1,103 @@
 :root{
-  background-color: #777777;
+  /* background-color: #777777; */
+  --bg-body: #f4f7f6; /* Fundo cinza muito claro para destacar os cards brancos */
+  --bg-card: #ffffff; /* Fundo branco para os containers */
+  --primary-blue: #007bff;
+  --border-color: #e0e0e0;
+}
+
+body{
+  background-color: var(--bg-body);
+  font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container-principal{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Define o Grid de cima: 3 colunas iguais */
+.grid-superior{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* Define o Grid de baixo: 2 colunas, sendo a lista um pouco maior */
+.grid-inferior{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px;
+}
+
+/* Estilo padrão para todos os "quadros" brancos */
+.card-box{
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: 1px solid var(--border-color);
+}
+
+.card-box h3{
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.card-box h4{
+  margin-top: 0;
+  font-size: 0.8rem;
+  /* border-bottom: 1px solid var(--border-color); */
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Estilo para os itens do resumo financeiro */
+.summary-item{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* Estilizando a trnsação do card */
+.transaction-card{
+  background: white;
+  color: #333333;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.item-entrada{
+  border-left: 5px solid #28a745; /* verde claro para combinar */
+}
+
+.item-saida{
+  border-left: 5px solid #dc3545; /* vermelho claro para combinar */
+}
+
+/* Botão de excluir discreto */
+.delete-btn {
+  background: none;
+  border: 1px solid #ddd;
+  color: #999999;
+  cursor: pointer; /* exibir a mão para indicar clicar */
+  border-radius: 3px;
+}
+
+.delete-btn:hover{
+  background: #ff4d4d;
+  color: white;
 }

@@ -6,6 +6,7 @@ import GraficoRosca from './components/GraficoRosca.js';
 import GraficoBarra from './components/GraficoBarra.js';
 import { v4 as uuidv4 } from 'uuid';
 import TransactionItem from './components/TransactionItem.js';
+import ResumoFinanceiro from './components/ResumoFinanceiro.js';
 
 function App() {
 
@@ -37,47 +38,54 @@ function App() {
     setTransacoes(listaFiltrada);
   }
 
-
-
-  // // Adicionar transações utilizando o useState (setTransacoes), spread operator [...] e passar via props
-  // const adicionarNovaTransacao = ((novaTransacao) => {
-  //   setTransacoes([
-  //     ...transacoes,
-  //     novaTransacao
-  //   ])
-  // });
-
   return (
-    <div className="App">
-      <h1>Finance Tracker</h1>
+    <div className="container-principal">
+      {/* // Cabeçalho */}
+      <header>
+        <h1>Rastreador financeiro</h1>
+      </header>
 
-      {/* Seção de Entrada de Dados */}
-      <section>
-        <Formulario aoEnviar={handleAdd} />
-      </section>
-      {/* Seção Visual: Gráficos */}
-      <section className="charts-container">
-        <GraficoBarra transacoes={transacoes} />
-        {/* Próximo passo: GraficoRosca aqui */}
-      </section>
+      {/* Seção Superior: Grid de 3 colunas para Resumo e Gráficos */}
+      <div className="grid-superior">
+        <ResumoFinanceiro transacoes={transacoes} />
+        <div className="card-box">
+          <h3>GraficoRosca.js Doughnut Chart (Gráfico de Rosca)</h3>
+          <h4>Categoria de despesas</h4>
+          <GraficoRosca transacoes={transacoes} />
+        </div>
+        <div className="card-box">
+          <h3>GraficoBarra.js Bar Chart <br/>(Gráfico de Barras)</h3>
+          <h4>Receitas vs. Despesas</h4>
+          <GraficoBarra transacoes={transacoes} />
 
-      {/* Seção de Listagem: Histórico de transações */}
-      <div className="data-container">
-        <h3>Transações Recentes</h3>
-        {transacoes.length > 0 ? (
-          transacoes.map((item) => (
-            <TransactionItem
-              key={item.id}
-              {...item} // Passa todas as propriedades (id, valor, etc.)
-              deleteTransaction={handleDelete}
-            />
-          ))
-        ) : (
-          <p className="center">Nenhuma transação encontrada.</p>
-        )}
+        </div>
+      </div>
+
+      {/* Seção Inferior: Grid de 2 colunas para Formulário e Histórico */}
+      <div className="grid-inferior">
+        <div className="card-box">
+          <h3>Adicionar nova transação</h3>
+          <Formulario aoEnviar={handleAdd} />
+        </div>
+
+        <div className="card-box listagem-container">
+          <h3>Transações recentes</h3>
+          <div className="data-container">
+            {transacoes.length > 0 ? (
+              transacoes.map((item) => (
+                <TransactionItem
+                  key={item.id}
+                  {...item}
+                  deleteTransaction={handleDelete}
+                />
+              ))
+            ) : (
+              <p className="center">Nenhuma transação encontrada.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
 export default App;
