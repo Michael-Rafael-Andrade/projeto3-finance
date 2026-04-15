@@ -3,6 +3,11 @@ import { Chart as ChartJS , CategoryScale, LinearScale, BarElement, Tooltip, Leg
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend );
 
+const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+};
+
 function GraficoBarra({transacoes}){
 
     const receitas = transacoes
@@ -22,7 +27,11 @@ function GraficoBarra({transacoes}){
         }]
     };
 
-    return <BarChart data={data} />
+    return (
+        <div style={{ height: '250px' }}>
+            <BarChart data={data} options={options} />
+        </div>
+    );
 }
 
 export default GraficoBarra;

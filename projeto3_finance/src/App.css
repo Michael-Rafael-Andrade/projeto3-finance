@@ -23,14 +23,17 @@ body {
 /* Define o Grid de cima: 3 colunas iguais */
 .grid-superior {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  margin-bottom: 20px;
 }
 
 /* Define o Grid de baixo: 2 colunas, sendo a lista um pouco maior */
 .grid-inferior {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  /* grid-template-columns: 1fr 1.5fr; */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
@@ -122,6 +125,45 @@ body {
   background-color: #0056b3;
 }
 
+/* Cartões de resumo e formulários */
+.card{
+  flex: 1 1 350px; /* Cresce, encolhe e tem base de 350px */
+  max-width: 100%; /* Nunca ultrapassa a tela */
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+/* Ajuste específico para dispositivos móveis */
+@media(max-width: 480px){
+  .transaction-header{
+    display: none; /* Esconde o cabeçalho em telas muito pequenas */
+  }
+
+  .transaction-card{
+    flex-direction: column; /* Empilha as informações da transação */
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .col-date, .col-desc, .col-category, .col-amount {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+
+  .delete-btn {
+    align-self: flex-end; /* Botão X no canto inferior direito */
+  }
+
+  .dashboard-container{
+    flex-direction: column; /* Em celulares, tudo vira uma coluna única */
+    padding: 10px;
+  }
+  .card{
+    flex: 1 1 100%; /* Ocupa 100% da largura disponível */
+  }
+}
 
 /* Estilo padrão para todos os "quadros" brancos */
 .card-box {
@@ -130,6 +172,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-color);
+  overflow: hidden; /* Garante que gráficos não estourem o card */
 }
 
 .card-box h3 {
@@ -150,11 +193,18 @@ body {
   text-align: center;
 }
 
+canvas {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
 /* Estilo para os itens do resumo financeiro */
 .summary-item {
+  max-width: 100% !important;
+  max-height: 250px !important; /* Limita a altura para não empurrar tudo para baixo */
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin: 0 auto;
   font-size: 1.1rem;
 }
 
@@ -180,7 +230,8 @@ body {
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--border-color);
-  transition: transform 0.2s
+  transition: transform 0.2s;
+  flex-wrap: wrap; /* Garante que o conteúdo não quebre o layout */
 }
 
 .item-entrada {
@@ -301,4 +352,13 @@ body {
 .btn-add-transaction:disabled{
   background-color: #cccccc;
   cursor: not-allowed;
+}
+
+/* Container principal do dashboard */
+.dashboard-container{
+  display: flex;
+  flex-wrap: wrap; /* permite que colunas pulem de linhas */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center; /* Centralizar tudo em telas grandes */
 }

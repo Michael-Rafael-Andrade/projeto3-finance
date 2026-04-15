@@ -3,6 +3,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+};
+
 function GraficoRosca({ transacoes }) {
     // Filtra apenas as despesas para o gráfico de categorias
     const despesas = transacoes.filter(t => t.tipo === 'saida');
@@ -21,7 +26,11 @@ function GraficoRosca({ transacoes }) {
         }]
     };
 
-    return <Doughnut data={data} />;
+    return (
+        <div style={{ height: '250px' }}>
+            <Doughnut data={data} options={options} />;
+        </div>
+    );
 }
 
 export default GraficoRosca;
