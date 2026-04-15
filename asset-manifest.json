@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/projeto3-finance/static/css/main.02d44c28.css",
+    "main.js": "/projeto3-finance/static/js/main.f60d3405.js",
+    "static/js/453.cee85315.chunk.js": "/projeto3-finance/static/js/453.cee85315.chunk.js",
+    "index.html": "/projeto3-finance/index.html",
+    "main.02d44c28.css.map": "/projeto3-finance/static/css/main.02d44c28.css.map",
+    "main.f60d3405.js.map": "/projeto3-finance/static/js/main.f60d3405.js.map",
+    "453.cee85315.chunk.js.map": "/projeto3-finance/static/js/453.cee85315.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.02d44c28.css",
+    "static/js/main.f60d3405.js"
+  ]
+}
