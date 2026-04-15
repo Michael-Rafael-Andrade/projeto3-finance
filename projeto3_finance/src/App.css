@@ -268,3 +268,37 @@ body {
   background-color: #fcfcfc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05s);
 }
+
+.form-row{
+  display: flex;
+  gap: 15px; /* Espaço entre os campos */
+  width: 100%;
+}
+
+/* Faz um campo ser maior do que o outro ( Descrição maior do que Valor ) */
+.flex-1{
+  flex: 1;
+}
+
+.flex-2{
+  flex:2;
+}
+
+/* Garante que as telas pequenas (celular) eles voltem a ficar um em cima do outro */
+@media(max-width: 600px){
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Opcional: Deixar o botão azul vibrante quando habilitado */
+.btn-add-transaction{
+  background-color: #007bff;
+  transition: background-color 0.3s;
+}
+
+.btn-add-transaction:disabled{
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
